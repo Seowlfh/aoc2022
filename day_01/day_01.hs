@@ -1,3 +1,5 @@
+import Data.List
+
 notEmpty :: String -> Bool
 notEmpty s = s /= ""
 
@@ -21,4 +23,8 @@ buildCaloryList content =
 
 main = do
     input <- lines <$> readFile "input"
-    print (foldr max 0 (buildCaloryList input))
+    let caloryList = buildCaloryList input
+    -- Answer to Part 1 
+    print (foldr max 0 caloryList)
+    -- Answer to Part 2
+    print (sum (take 3 (reverse (sort caloryList))))
